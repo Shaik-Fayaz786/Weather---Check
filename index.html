@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-time Weather</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #cce7ff; /* Light blue background */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      color: #004080;
+      margin-bottom: 10px;
+    }
+
+    #clock {
+      font-weight: 500;
+      color: #003366;
+      margin-bottom: 20px;
+    }
+
+    .search-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      border: 1px solid #888;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #suggestions {
+      background: white;
+      border: 1px solid #ccc;
+      max-height: 150px;
+      overflow-y: auto;
+      position: absolute;
+      width: 250px;
+      z-index: 10;
+      border-radius: 5px;
+    }
+
+    .suggestion-item {
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    .suggestion-item:hover {
+      background: #f0f0f0;
+    }
+
+    #weatherCard {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      width: 80%;
+      max-width: 700px;
+    }
+
+    .weather-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .left {
+      flex: 1;
+    }
+
+    .right {
+      text-align: center;
+    }
+
+    .temp {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    .desc {
+      text-transform: capitalize;
+      margin-bottom: 5px;
+    }
+
+    .meta, .timestamps {
+      font-size: 0.9em;
+      color: #333;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+    }
+
+    a {
+      color: #004080;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Real-time Weather</h1>
+  <div id="clock">Loading time...</div>
+
+  <form id="searchForm" class="search-section">
+    <input type="text" id="cityInput" placeholder="Enter city (example: London)" />
+    <button type="submit">Search</button>
+    <button type="button" id="useLocation">Use my location</button>
+  </form>
+
+  <div id="suggestions"></div>
+  <div id="weatherCard">Enter a city or use your location to see weather.</div>
+
+  <div class="footer">
+    Data from <a href="https://openweathermap.org" target="_blank">OpenWeatherMap</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
